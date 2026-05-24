@@ -7,6 +7,12 @@ import { UsersService } from './users/users.service';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // Enable CORS for all origins in development
+  app.enableCors({
+    origin: true,
+    credentials: true,
+  });
+
   // Enable validation globally
   app.useGlobalPipes(
     new ValidationPipe({
